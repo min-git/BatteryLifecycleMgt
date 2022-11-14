@@ -49,5 +49,5 @@ Modeling a battery ontology of Azure Digital Twins needs domain knowledge in a b
 
 In the case of a vehicle, a battery system consists of pack, modules and cells. The minimum unit is a cell which is container to store energy. Multiple cells are grouped together to form a module. Multiple modules are grouped together to form a pack.
 
-![image](https://github.com/min-git/BatteryLifecycleMgt/blob/main/images/pic02.png)
+![image]()
 > A Novel Prediction Process of the Remaining Useful Life of Electric Vehicle Battery Using Real-World Data, 2021 Dec
