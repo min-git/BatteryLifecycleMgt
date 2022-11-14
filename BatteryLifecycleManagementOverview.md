@@ -51,3 +51,38 @@ In the case of a vehicle, a battery system consists of pack, modules and cells. 
 
 ![image](https://github.com/min-git/BatteryLifecycleMgt/blob/main/images/pic02.png)
 > A Novel Prediction Process of the Remaining Useful Life of Electric Vehicle Battery Using Real-World Data, 2021 Dec
+
+[BMS (Battery Management System)](https://en.wikipedia.org/wiki/Battery_management_system#:~:text=A%20battery%20management%20system%20%28%20BMS%29%20is%20any,environment%2C%20authenticating%20it%20and%20%2F%20or%20balancing%20it.) is a key component that manages the parameters of a battery system. It communicates and manages cells, modules and others through CAN (Controller Area Network) network protocol.
+Automotive OEM possesses own know-how on a battery system. It is difficult to standardize it as a common ontology. It needs to be defined through discussion with OEM’s battery expert.
+OEM can manage each customer’s battery lifecycle with Azure Digital Twins ontology.
+
+![image](https://github.com/min-git/BatteryLifecycleMgt/blob/main/images/pic03.png)
+> Example: A battery system structure
+
+![image](https://github.com/min-git/BatteryLifecycleMgt/blob/main/images/pic04.png)
+> Example: Azure Digital Twins Battery Ontology
+
+# Potential use cases
+-	EV battery performance and optimization
+  e.g.) [Hyundai Motor Group Pilots Digital Twin with Microsoft](https://www.hyundaimotorgroup.com/news/CONT0000000000032191)
+-	Connected vehicle management for design and service
+-	Vehicle sharing and rental service management
+-	Battery test in engineering
+
+# Considerations
+These considerations implement the pillars of the Azure Well-Architected Framework, which is a set of guiding tenets that can be used to improve the quality of a workload. For more information, see [Microsoft Azure Well-Architected Framework](https://learn.microsoft.com/en-us/azure/architecture/framework/).
+
+## Reliability
+Vehicles move across multi regions. It needs to connect vehicles to nearest cloud region with the lowest latency. 
+-	If you use Azure IoT Hub as cloud IoT gateway, you can use [Azure IoT Hub Device Provisioning Service (DPS)](https://learn.microsoft.com/en-us/azure/iot-dps/about-iot-dps) for zero-touch provisioning and automatic connection to a right IoT Hub based on your rule definition.
+
+## Security
+Security provides assurances against deliberate attacks and the abuse of your valuable data and systems. For more information, see [Overview of the security pillar](https://learn.microsoft.com/en-us/azure/architecture/framework/security/overview).
+In the case of connecting and tracking end-users’ vehicles, device data is being exposed to public network. Microsoft provides [Zero Trust Cybersecurity for the Internet of Things](https://azure.microsoft.com/en-us/resources/zero-trust-cybersecurity-for-the-internet-of-things/) that provides the principals of zero trust security to help proactively establish an IoT strategy.
+Azure Digital Twins is the central service that integrates legacy systems such as ERP and provides downstream data to other services. For security considerations, see [Secure Azure Digital Twins](https://learn.microsoft.com/en-us/azure/digital-twins/concepts-security).
+
+## Cost optimization
+Vehicles being used by end-users generate huge amounts of data. Review [Cost optimization in your IoT workload](https://learn.microsoft.com/en-us/azure/architecture/framework/iot/iot-cost-optimization) for implementing cost effective IoT solutions. In terms of end-to-end solutions, see [Cost optimization](https://learn.microsoft.com/en-us/azure/architecture/framework/iot/iot-cost-optimization) in the [Microsoft Azure Well-Architected Framework](https://learn.microsoft.com/en-us/azure/architecture/framework/).
+
+## Performance efficiency
+A large volume of Azure Digital Twins ontology and twin graph could cause high complexity and performance issues based on a requirement. Whenever a system or code queries data in Azure Digital Twins, it calls [APIs](https://learn.microsoft.com/en-us/rest/api/azure-digitaltwins/). For optimizing performance of twin graph traversals, see [How to speed up Azure Digital Twins Queries with Caching Strategy](https://techcommunity.microsoft.com/t5/internet-of-things-blog/how-to-speed-up-azure-digital-twins-queries-with-caching/ba-p/2551153).
